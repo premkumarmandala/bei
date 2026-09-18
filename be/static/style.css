@@ -1,0 +1,165 @@
+/* Plain CSS, no framework. Just enough to make the page readable. */
+
+body {
+    font-family: system-ui, sans-serif;
+    margin: 0;
+    background: #f6f6f4;
+    color: #1c1c1c;
+}
+
+header {
+    background: #1c1c1c;
+    color: #ffffff;
+    padding: 16px 24px;
+}
+
+header .logo {
+    display: block;
+    height: 30px;
+    width: auto;
+    margin-bottom: 12px;
+}
+
+header h1 {
+    margin: 0 0 8px 0;
+    font-size: 20px;
+}
+
+header nav a {
+    color: #9fd0ff;
+    margin-right: 16px;
+    text-decoration: none;
+}
+
+main {
+    padding: 24px;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+.empty {
+    color: #666666;
+}
+
+/* Song cards --------------------------------------------------------------- */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    padding: 16px;
+}
+
+.card .creator {
+    font-weight: bold;
+    margin: 0 0 4px 0;
+}
+
+.card .description {
+    margin: 0 0 8px 0;
+}
+
+.card .file {
+    font-family: ui-monospace, monospace;
+    font-size: 12px;
+    color: #666666;
+    margin: 0 0 12px 0;
+}
+
+.card .player {
+    width: 100%;
+    margin-top: 12px;
+}
+
+/* Upload form -------------------------------------------------------------- */
+
+form {
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    padding: 16px;
+    max-width: 480px;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+input[type="file"] {
+    margin-top: 6px;
+}
+
+button {
+    margin-top: 16px;
+    padding: 8px 16px;
+    font-size: 14px;
+    background: #1c1c1c;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#upload-message {
+    max-width: 480px;
+}
+
+/* Backend trace panel ------------------------------------------------------ */
+
+.trace-panel {
+    background: #dceaf6;
+    color: #15364f;
+    padding: 16px 24px 32px 24px;
+    margin-top: 32px;
+    border-top: 3px solid #1c1c1c;
+}
+
+.trace-panel h2 {
+    margin-top: 0;
+}
+
+.trace-panel details {
+    border-top: 1px solid #b6d2e8;
+    padding: 8px 0;
+}
+
+.trace-panel summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.trace-panel pre {
+    font-family: ui-monospace, monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    overflow-x: auto;
+    background: #eef6fd;
+    border: 1px solid #c3dcf0;
+    padding: 12px;
+    border-radius: 4px;
+}
+
+.trace-panel ol {
+    font-size: 13px;
+    line-height: 1.7;
+}

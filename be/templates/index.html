@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>BEI - Songs</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+    <img class="logo" src="/static/aiklogo.png" alt="AI Karyashala">
+    <h1>Backend Internals Explorer</h1>
+    <nav>
+        <a href="/">All Songs</a>
+        <a href="/upload">Upload a Song</a>
+    </nav>
+</header>
+
+<main>
+    <h2>Songs</h2>
+
+    % if not songs:
+        <p class="empty">No songs yet. <a href="/upload">Upload the first one.</a></p>
+    % end
+
+    <div class="grid">
+        % for song in songs:
+        <div class="card">
+            <p class="creator">{{ song["creator_name"] }}</p>
+            <p class="description">{{ song["song_description"] }}</p>
+            <p class="file">{{ song["file_name"] }}</p>
+            <button class="play-button" data-file="{{ song["file_name"] }}">Play</button>
+            <audio class="player" controls preload="none"></audio>
+        </div>
+        % end
+    </div>
+</main>
+
+<!-- The server rendered this page and also described what it did while doing
+     so. script.js reads this JSON and fills in the Backend Trace panel below. -->
+<script id="backend-trace" type="application/json">{{! trace_json }}</script>
+
+<section class="trace-panel">
+    <h2>Backend Trace</h2>
+
+    <details open>
+        <summary>HTTP Request</summary>
+        <pre id="trace-request"></pre>
+    </details>
+
+    <details open>
+        <summary>HTTP Response</summary>
+        <pre id="trace-response"></pre>
+    </details>
+
+    <details open>
+        <summary>Returned Data</summary>
+        <pre id="trace-data"></pre>
+    </details>
+
+    <details open>
+        <summary>Backend Explanation</summary>
+        <ol id="trace-explanation"></ol>
+    </details>
+</section>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>

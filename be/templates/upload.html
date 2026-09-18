@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>BEI - Upload</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+    <img class="logo" src="/static/aiklogo.png" alt="AI Karyashala">
+    <h1>Backend Internals Explorer</h1>
+    <nav>
+        <a href="/">All Songs</a>
+        <a href="/upload">Upload a Song</a>
+    </nav>
+</header>
+
+<main>
+    <h2>Upload a Song</h2>
+
+    <!-- enctype is what makes the browser build a multipart body. Without it a
+         file could not travel inside the request at all. -->
+    <form id="upload-form" enctype="multipart/form-data">
+        <label for="creator_name">Creator Name</label>
+        <input type="text" id="creator_name" name="creator_name">
+
+        <label for="song_description">Song Description</label>
+        <textarea id="song_description" name="song_description" rows="3"></textarea>
+
+        <label for="song_file">Choose MP3</label>
+        <input type="file" id="song_file" name="song_file" accept="audio/mpeg">
+
+        <button type="submit">Upload</button>
+    </form>
+
+    <p id="upload-message"></p>
+</main>
+
+<script id="backend-trace" type="application/json">{{! trace_json }}</script>
+
+<section class="trace-panel">
+    <h2>Backend Trace</h2>
+
+    <details open>
+        <summary>Latest Request</summary>
+        <pre id="trace-request"></pre>
+    </details>
+
+    <details open>
+        <summary>Latest Response</summary>
+        <pre id="trace-response"></pre>
+    </details>
+
+    <details open>
+        <summary>Returned Data</summary>
+        <pre id="trace-data"></pre>
+    </details>
+
+    <details open>
+        <summary>Backend Explanation</summary>
+        <ol id="trace-explanation"></ol>
+    </details>
+</section>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>
