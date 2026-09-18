@@ -27,7 +27,10 @@ sys.path.append(str(BASE_DIR))
 import bottle
 from bottle import get, post, request, response, run, static_file, template
 
-import database
+try:
+    import database
+except ImportError:
+    from be import database
 
 if os.environ.get("VERCEL"):
     UPLOADS_DIR = Path("/tmp/uploads")
