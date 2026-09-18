@@ -15,6 +15,7 @@ Run it with:
     python3 app.py
 """
 
+import os
 import json
 from pathlib import Path
 
@@ -26,7 +27,12 @@ import database
 # Everything is located relative to this file so the server can be started from
 # any working directory.
 BASE_DIR = Path(__file__).parent
-UPLOADS_DIR = BASE_DIR / "uploads"
+
+if os.environ.get("VERCEL"):
+    UPLOADS_DIR = Path("/tmp/uploads")
+else:
+    UPLOADS_DIR = BASE_DIR / "uploads"
+    
 STATIC_DIR = BASE_DIR / "static"
 
 # Tell Bottle where the HTML templates live.
@@ -316,13 +322,14 @@ def serve_static(filename):
 # Expose the WSGI app for Vercel
 app = bottle.default_app()
 
+# Initialize directories and database for Vercel
+UPLOADS_DIR.mkdir(exist_ok=True)
+database.create_table()
+
 if __name__ == "__main__":
     print()
     print("Backend Internals Explorer starting up")
     print()
-
-    UPLOADS_DIR.mkdir(exist_ok=True)
-    database.create_table()
 
     print("Open http://localhost:8080/ in your browser")
     print("Watch this terminal while you click.")

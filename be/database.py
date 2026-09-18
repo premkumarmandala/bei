@@ -9,12 +9,16 @@ The printing is the point: a student reading the terminal should be able to see
 the SQL statement that their click produced.
 """
 
+import os
 import sqlite3
 from pathlib import Path
 
 # The database file sits next to this Python file, so the app can be started
-# from any directory and still find it.
-DB_FILE = Path(__file__).parent / "songs.db"
+# from any directory and still find it. On Vercel, it uses the /tmp folder.
+if os.environ.get("VERCEL"):
+    DB_FILE = Path("/tmp/songs.db")
+else:
+    DB_FILE = Path(__file__).parent / "songs.db"
 
 
 def connect():
