@@ -16,17 +16,18 @@ Run it with:
 """
 
 import os
+import sys
 import json
 from pathlib import Path
+
+# Add the 'be' directory to the Python path so Vercel can find 'database.py'
+BASE_DIR = Path(__file__).parent
+sys.path.append(str(BASE_DIR))
 
 import bottle
 from bottle import get, post, request, response, run, static_file, template
 
 import database
-
-# Everything is located relative to this file so the server can be started from
-# any working directory.
-BASE_DIR = Path(__file__).parent
 
 if os.environ.get("VERCEL"):
     UPLOADS_DIR = Path("/tmp/uploads")
