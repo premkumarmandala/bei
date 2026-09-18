@@ -313,6 +313,9 @@ def serve_static(filename):
 # Starting the server.
 # ---------------------------------------------------------------------------
 
+# Expose the WSGI app for Vercel
+app = bottle.default_app()
+
 if __name__ == "__main__":
     print()
     print("Backend Internals Explorer starting up")
